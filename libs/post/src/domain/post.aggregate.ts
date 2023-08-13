@@ -1,8 +1,8 @@
 import { IPost } from "./post.interface";
 import { randomStringGenerator } from "@nestjs/common/utils/random-string-generator.util";
-import { AggregateRoot } from "@nestjs/cqrs";
+import { PostServices } from "./services";
 
-export class PostAggregate extends AggregateRoot implements IPost {
+export class PostAggregate extends PostServices implements IPost {
   id: string = randomStringGenerator();
   title: string;
   message: string;
@@ -19,5 +19,9 @@ export class PostAggregate extends AggregateRoot implements IPost {
     const _post = new PostAggregate();
     Object.assign(_post, post);
     return _post;
+  }
+
+  setPublished() {
+    this.published = true;
   }
 }
