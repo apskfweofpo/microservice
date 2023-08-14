@@ -10,7 +10,7 @@ export class CreatePostCommandHandler
 {
   constructor(private readonly postRepository: PostRepository) {}
 
-  async execute({ post }: CreatePostCommand): Promise<PostAggregate>  {
+  async execute({ post }: CreatePostCommand): Promise<PostAggregate | void>  {
     const postAggregate = PostAggregate.create(post);
     const createdPost = await this.postRepository
       .save(postAggregate)
