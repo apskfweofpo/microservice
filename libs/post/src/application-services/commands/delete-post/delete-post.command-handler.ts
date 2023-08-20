@@ -15,7 +15,7 @@ export class DeletePostCommandHandler implements ICommandHandler<DeletePostComma
   constructor(public readonly postRepository: PostRepository) {
   }
 
-  async execute({ id }: DeletePostCommand): Promise<boolean | void> {
+  async execute({ id }: DeletePostCommand): Promise<boolean> {
     const existPost = await this.postRepository
       .findOne(id).catch(err => {
         this.logger.error(err);

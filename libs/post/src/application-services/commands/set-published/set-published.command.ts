@@ -1,3 +1,3 @@
 export class SetPublishedCommand {
-  constructor(private readonly id: string) {}
+  constructor(public readonly id: string) {}
 }
